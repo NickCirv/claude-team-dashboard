@@ -1,0 +1,39 @@
+{
+  "name": "claude-team-dashboard",
+  "version": "1.0.0",
+  "description": "Team-wide Claude Code analytics dashboard",
+  "type": "module",
+  "bin": {
+    "claude-team-dashboard": "./bin/team.js"
+  },
+  "main": "./src/index.js",
+  "scripts": {
+    "start": "node bin/team.js start"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "public/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "claude",
+    "anthropic",
+    "analytics",
+    "dashboard",
+    "team",
+    "ai",
+    "cost-tracking"
+  ],
+  "author": "NickCirv",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "express": "^4.19.2"
+  }
+}
