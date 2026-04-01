@@ -1,3 +1,5 @@
+![Banner](banner.svg)
+
 # claude-team-dashboard
 
 Team-wide Claude Code analytics — track cost, token usage, and model distribution across every developer.
