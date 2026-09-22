@@ -1,61 +1,68 @@
-<div align="center">
+![Nicholas Ashkar — claude-team-dashboard](assets/nicholas-ashkar/banner.png)
 
 # claude-team-dashboard
 
-**Aggregate Claude Code usage across your whole team — cost, tokens, and model distribution in one place.**
+Aggregates imported Claude usage records into team summaries and a local web dashboard.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg?labelColor=0B0A09)](LICENSE)
-[![Node >=18](https://img.shields.io/badge/node-%3E%3D18-brightgreen.svg?labelColor=0B0A09)](package.json)
 
-</div>
 
-## Install
+<a id="usage"></a>
 
-```bash
-npx github:NickCirv/claude-team-dashboard <command>
-```
-
-## Usage
-
-```bash
-# Import a developer's usage data
-npx github:NickCirv/claude-team-dashboard import alice-usage.json
-
-# Print team summary to terminal
-npx github:NickCirv/claude-team-dashboard summary
-
-# Per-developer report
-npx github:NickCirv/claude-team-dashboard report alice
-
-# Start the web dashboard
-npx github:NickCirv/claude-team-dashboard start
-```
-
-| Command | Description |
-|---------|-------------|
-| `summary` | Team totals: cost, sessions, tokens, active devs |
-| `report <dev>` | Per-developer breakdown with daily cost history (last 14 days) |
-| `import <file>` | Import or update a developer's usage JSON |
-| `start [-p <port>]` | Web dashboard at `localhost:4321` with REST API |
+<a id="print-team-summary-to-terminal"></a>
 
 ## What it does
 
-Reads developer usage JSON files and aggregates them into a shared view. The terminal summary shows team totals, per-developer breakdowns, model distribution, and a 30-day cost timeline. The web dashboard at `localhost:4321` exposes the same data via REST (`/api/team`, `/api/dev/:name`, `/api/raw`). Data is stored in `~/.claude-team/data.json`.
+- JSON import.
+- Team and developer summaries.
+- A web interface.
+- Raw and aggregated API endpoints.
 
-**Expected import format:**
 
-```json
-{
-  "name": "alice",
-  "sessions": 412,
-  "totalCost": 98.40,
-  "tokens": { "input": 10200000, "output": 4000000 },
-  "modelUsage": { "claude-sonnet-4-6": 389, "claude-haiku-4-5": 23 },
-  "projects": { "my-app": { "cost": 45.20, "sessions": 201 } },
-  "daily": [{ "date": "2026-02-28", "cost": 4.80 }],
-  "lastActive": "2026-02-28"
-}
+
+<a id="install"></a>
+
+<a id="start-the-web-dashboard"></a>
+
+## Quickstart
+
+Prerequisites: Node.js `>=20` and npm. The checkout below pins the source used for this documentation.
+
+```sh
+git clone https://github.com/NickCirv/claude-team-dashboard.git
+cd claude-team-dashboard
+git checkout fc752e5877bb8042b574d5bc8dd9838446be9d87
+npm install
+node bin/team.js summary
 ```
 
----
-<sub>Node >=18 · MIT · by <a href="https://github.com/NickCirv">NickCirv</a></sub>
+**Expected behavior (illustrative, not captured):** Prints a summary of locally stored or bundled team data.
+
+Examples are source-inspected, **not runtime-tested**. See the research record for verification gaps.
+
+## Boundaries and data
+
+Imported records and sample data are not proof of real team adoption. The server exposes usage endpoints; authentication was not established in this documentation review. Cost/usage interpretation depends on input quality.
+
+
+
+<a id="import-a-developers-usage-data"></a>
+
+<a id="per-developer-report"></a>
+
+## Development
+
+The manifest defines `npm test` as:
+
+```sh
+node --test
+```
+
+The captured suite is a smoke check, not end-to-end behavior coverage. Examples include “entry is valid JavaScript”. Tests were not run for this documentation revision.
+
+See [implementation and command reference](docs/REFERENCE.md) for the package scripts and inspected interfaces, and [research record](docs/RESEARCH.md) for the pinned source, document decisions and unresolved checks.
+
+## License and contact
+
+See [LICENSE](LICENSE) for the original terms and attribution. Legal text is unchanged.
+
+[Nicholas Ashkar](https://nicholashkar.com/) · [Discuss a project](https://nicholashkar.com/#oxblood-contact)
